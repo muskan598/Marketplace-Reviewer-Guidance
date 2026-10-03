@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 AI Marketplace Quality Reviewer - Premium Edition</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+        
+        .hover-lift {
+            transition: all 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .pulse-glow {
+            animation: pulseGlow 2s infinite;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+            50% { box-shadow: 0 0 40px rgba(255, 255, 255, 0.8), 0 0 60px rgba(147, 51, 234, 0.6); }
+        }
+        
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .product-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+        }
+        
+        .product-card:hover::before {
+            left: 100%;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+            backdrop-filter: blur(10px);
+        }
+        
+        .category-icon {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .btn-premium {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-premium::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .btn-premium:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .btn-premium:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6);
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .slide-in {
+            animation: slideIn 0.6s ease-out forwards;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        .chart-bar {
+            transition: all 0.5s ease;
+        }
+        
+        .chart-bar:hover {
+            transform: scaleY(1.1);
+            filter: brightness(1.2);
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 1rem;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.3);
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #667eea;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+<body class="p-4">
+    <!-- Notification Container -->
+    <div id="notificationContainer"></div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="modal hidden">
+        <div class="modal-content glass-card rounded-3xl p-8 w-full max-w-4xl">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-3xl font-black text-white">
+                    <i class="fas fa-cog mr-3"></i> Settings
+                </h2>
+                <button onclick="closeSettings()" class="text-white hover:text-gray-300 text-3xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Account Settings -->
+                <div class="glass-card rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-white mb-4">
+                        <i class="fas fa-user mr-2"></i> Account Settings
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-white font-semibold mb-2 block">Username</label>
+                            <input type="text" value="admin@marketplace.com" class="w-full px-4 py-3 rounded-xl bg-white bg-opacity-20 text-white border border-white border-opacity-30 focus:outline-none focus:border-purple-400">
+                        </div>
+                        <div>
+                            <label class="text-white font-semibold mb-2 block">API Key</label>
+                            <input type="password" value="sk-ant-usr-xxxxxxxxxxxxx" class="w-full px-4 py-3 rounded-xl bg-white bg-opacity-20 text-white border border-white border-opacity-30 focus:outline-none focus:border-purple-400">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notification Settings -->
+                <div class="glass-card rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-white mb-4">
+                        <i class="fas fa-bell mr-2"></i> Notifications
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-white">Email Notifications</span>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-white">Push Notifications</span>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-white">Review Alerts</span>
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Settings -->
+                <div class="glass-card rounded-2xl p-6">
+                    <h3 class="text-xl font-bold text-white mb-4">
+                        <i class="fas fa-robot mr-2"></i> AI Configuration
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="text-white font-semibold mb-2 block">Strictness Level</label>
+                            <select class="w-full px-4 py-3 rounded-xl bg-white bg-opacity-20 text-white border border-white border-opacity-30 focus:outline-none focus:border-purple-400">
+                                <option>Lenient</option>
+                                <option selected>Balanced</option>
+                                <option>Strict</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-white">Auto-Approve High Scores</span>
+                            <label class="switch">
+                                <input type="checkbox">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Save Button -->
+                <button onclick="saveSettings()" class="btn-premium w-full px-8 py-4 rounded-xl text-white font-bold text-lg">
+                    <i class="fas fa-save mr-2"></i> Save Settings
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notifications Modal -->
+    <div id="notificationsModal" class="modal hidden">
+        <div class="modal-content glass-card rounded-3xl p-8 w-full max-w-2xl">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-3xl font-black text-white">
+                    <i class="fas fa-bell mr-3"></i> Notifications
+                </h2>
+                <button onclick="closeNotifications()" class="text-white hover:text-gray-300 text-3xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="space-y-4">
+                <div class="glass-card rounded-xl p-4 hover-lift cursor-pointer">
+                    <div class="flex items-start space-x-4">
+                        <i class="fas fa-check-circle text-3xl text-green-400"></i>
+                        <div class="flex-1">
+                            <h4 class="text-white font-bold">Listing Approved</h4>
+                            <p class="text-purple-200 text-sm">Premium Wireless Headphones has been approved with score 95/100</p>
+                            <p class="text-purple-300 text-xs mt-2">2 hours ago</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card rounded-xl p-4 hover-lift cursor-pointer">
+                    <div class="flex items-start space-x-4">
+                        <i class="fas fa-clock text-3xl text-yellow-400"></i>
+                        <div class="flex-1">
+                            <h4 class="text-white font-bold">Review In Progress</h4>
+                            <p class="text-purple-200 text-sm">Smart Watch Ultra is currently being reviewed by AI</p>
+                            <p class="text-purple-300 text-xs mt-2">15 minutes ago</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card rounded-xl p-4 hover-lift cursor-pointer">
+                    <div class="flex items-start space-x-4">
+                        <i class="fas fa-exclamation-triangle text-3xl text-orange-400"></i>
+                        <div class="flex-1">
+                            <h4 class="text-white font-bold">Action Required</h4>
+                            <p class="text-purple-200 text-sm">Laptop Listing needs your attention - missing description</p>
+                            <p class="text-purple-300 text-xs mt-2">1 hour ago</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card rounded-xl p-4 hover-lift cursor-pointer">
+                    <div class="flex items-start space-x-4">
+                        <i class="fas fa-info-circle text-3xl text-blue-400"></i>
+                        <div class="flex-1">
+                            <h4 class="text-white font-bold">System Update</h4>
+                            <p class="text-purple-200 text-sm">New AI model version 2.0 is now available with improved accuracy</p>
+                            <p class="text-purple-300 text-xs mt-2">5 hours ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="glass-card rounded-3xl p-6 mb-6 pulse-glow">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <div class="float-animation">
+                    <i class="fas fa-robot text-6xl" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"></i>
+                </div>
+                <div>
+                    <h1 class="text-4xl font-black text-white">AI Marketplace Quality Reviewer</h1>
+                    <p class="text-purple-200 text-lg">Premium Edition - Powered by Advanced AI Technology</p>
+                </div>
+            </div>
+            <div class="flex space-x-3">
+                <button onclick="openNotifications()" class="glass-card hover-lift px-6 py-3 rounded-xl text-white relative">
+                    <i class="fas fa-bell mr-2"></i> Notifications
+                    <span class="absolute top-2 right-2 w-3 h-3 bg-red-500 rounded-full animate-pulse"></span>
+                </button>
+                <button onclick="openSettings()" class="glass-card hover-lift px-6 py-3 rounded-xl text-white">
+                    <i class="fas fa-cog mr-2"></i> Settings
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="glass-card rounded-3xl p-4 mb-6">
+        <div class="flex space-x-2 overflow-x-auto">
+            <button onclick="showSection('dashboard')" class="btn-premium px-6 py-3 rounded-xl text-white font-semibold whitespace-nowrap">
+                <i class="fas fa-chart-line mr-2"></i> Dashboard
+            </button>
+            <button onclick="showSection('create')" class="btn-premium px-6 py-3 rounded-xl text-white font-semibold whitespace-nowrap">
+                <i class="fas fa-plus-circle mr-2"></i> Create Listing
+            </button>
+            <button onclick="showSection('review')" class="btn-premium px-6 py-3 rounded-xl text-white font-semibold whitespace-nowrap">
+                <i class="fas fa-search mr-2"></i> Review Listings
+            </button>
+            <button onclick="showSection('batch')" class="btn-premium px-6 py-3 rounded-xl text-white font-semibold whitespace-nowrap">
+                <i class="fas fa-upload mr-2"></i> Batch Upload
+            </button>
+            <button onclick="showSection('history')" class="btn-premium px-6 py-3 rounded-xl text-white font-semibold whitespace-nowrap">
+                <i class="fas fa-history mr-2"></i> History
+            </button>
+            <button onclick="showSection('analytics')" class="btn-premium px-6 py-3 rounded-xl text-white font-semibold whitespace-nowrap">
+                <i class="fas fa-chart-bar mr-2"></i> Analytics
+            </button>
+        </div>
+    </div>
+
+    <!-- Dashboard Section -->
+    <div id="dashboard" class="section">
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+            <div class="stat-card hover-lift rounded-3xl p-6 slide-in cursor-pointer" style="animation-delay: 0.1s;" onclick="showNotification('📊 Total Listings: 1,247 (+12.5% this month)', 'info')">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-purple-200 text-sm font-semibold">Total Listings</p>
+                        <h3 class="text-4xl font-black text-white mt-2">1,247</h3>
+                        <p class="text-green-300 text-sm mt-2">
+                            <i class="fas fa-arrow-up mr-1"></i> +12.5% this month
+                        </p>
+                    </div>
+                    <i class="fas fa-shopping-bag text-6xl text-white opacity-20"></i>
+                </div>
+            </div>
+
+            <div class="stat-card hover-lift rounded-3xl p-6 slide-in cursor-pointer" style="animation-delay: 0.2s;" onclick="showNotification('✅ Approved: 892 listings (71.5% approval rate)', 'success')">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-purple-200 text-sm font-semibold">Approved</p>
+                        <h3 class="text-4xl font-black text-white mt-2">892</h3>
+                        <p class="text-green-300 text-sm mt-2">
+                            <i class="fas fa-check-circle mr-1"></i> 71.5% approval rate
+                        </p>
+                    </div>
+                    <i class="fas fa-check-circle text-6xl text-white opacity-20"></i>
+                </div>
+            </div>
+
+            <div class="stat-card hover-lift rounded-3xl p-6 slide-in cursor-pointer" style="animation-delay: 0.3s;" onclick="showNotification('⏳ Under Review: 234 listings are being processed', 'warning')">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-purple-200 text-sm font-semibold">Under Review</p>
+                        <h3 class="text-4xl font-black text-white mt-2">234</h3>
+                        <p class="text-yellow-300 text-sm mt-2">
+                            <i class="fas fa-clock mr-1"></i> Processing...
+                        </p>
+                    </div>
+                    <i class="fas fa-hourglass-half text-6xl text-white opacity-20"></i>
+                </div>
+            </div>
+
+            <div class="stat-card hover-lift rounded-3xl p-6 slide-in cursor-pointer" style="animation-delay: 0.4s;" onclick="showNotification('❌ Rejected: 121 listings need improvement', 'error')">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-purple-200 text-sm font-semibold">Rejected</p>
+                        <h3 class="text-4xl font-black text-white mt-2">121</h3>
+                        <p class="text-red-300 text-sm mt-2">
+                            <i class="fas fa-times-circle mr-1"></i> Needs improvement
+                        </p>
+                    </div>
+                    <i class="fas fa-exclamation-triangle text-6xl text-white opacity-20"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Categories with Images -->
+        <div class="glass-card rounded-3xl p-8 mb-6 slide-in" style="animation-delay: 0.5s;">
+            <h2 class="text-3xl font-black text-white mb-6">
+                <i class="fas fa-layer-group mr-3"></i> Product Categories
+            </h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <div class="product-card hover-lift glass-card rounded-2xl p-6 text-center cursor-pointer" onclick="filterCategory('Electronics')">
+                    <i class="fas fa-mobile-alt category-icon mb-3"></i>
+                    <h4 class="text-white font-bold">Electronics</h4>
+                    <p class="text-purple-200 text-sm">342 items</p>
+                </div>
+                <div class="product-card hover-lift glass-card rounded-2xl p-6 text-center cursor-pointer" onclick="filterCategory('Fashion')">
+                    <i class="fas fa-tshirt category-icon mb-3"></i>
+                    <h4 class="text-white font-bold">Fashion</h4>
+                    <p class="text-purple-200 text-sm">567 items</p>
+                </div>
+                <div class="product-card hover-lift glass-card rounded-2xl p-6 text-center cursor-pointer" onclick="filterCategory('Home')">
+                    <i class="fas fa-home category-icon mb-3"></i>
+                    <h4 class="text-white font-bold">Home</h4>
+                    <p class="text-purple-200 text-sm">189 items</p>
+                </div>
+                <div class="product-card hover-lift glass-card rounded-2xl p-6 text-center cursor-pointer" onclick="filterCategory('Sports')">
+                    <i class="fas fa-futbol category-icon mb-3"></i>
+                    <h4 class="text-white font-bold">Sports</h4>
+                    <p class="text-purple-200 text-sm">234 items</p>
+                </div>
+                <div class="product-card hover-lift glass-card rounded-2xl p-6 text-center cursor-pointer" onclick="filterCategory('Books')">
+                    <i class="fas fa-book category-icon mb-3"></i>
+                    <h4 class="text-white font-bold">Books</h4>
+                    <p class="text-purple-200 text-sm">445 items</p>
+                </div>
+                <div class="product-card hover-lift glass-card rounded-2xl p-6 text-center cursor-pointer" onclick="filterCategory('Gaming')">
+                    <i class="fas fa-gamepad category-icon mb-3"></i>
+                    <h4 class="text-white font-bold">Gaming</h4>
+                    <p class="text-purple-200 text-sm">298 items</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <!-- Quality Score Chart -->
+            <div class="glass-card rounded-3xl p-8 slide-in" style="animation-delay: 0.6s;">
+                <h3 class="text-2xl font-black text-white mb-6">
+                    <i class="fas fa-chart-bar mr-3"></i> Quality Scores
+                </h3>
+                <div class="space-y-4">
+                    <div class="cursor-pointer" onclick="showNotification('🌟 Excellent: 67% of listings score 90-100', 'success')">
+                        <div class="flex justify-between text-white mb-2">
+                            <span>Excellent (90-100)</span>
+                            <span class="font-bold">67%</span>
+                        </div>
+                        <div class="w-full bg-white bg-opacity-20 rounded-full h-4">
+                            <div class="chart-bar h-4 rounded-full" style="width: 67%; background: linear-gradient(90deg, #10b981, #34d399);"></div>
+                        </div>
+                    </div>
+                    <div class="cursor-pointer" onclick="showNotification('👍 Good: 23% of listings score 80-89', 'info')">
+                        <div class="flex justify-between text-white mb-2">
+                            <span>Good (80-89)</span>
+                            <span class="font-bold">23%</span>
+                        </div>
+                        <div class="w-full bg-white bg-opacity-20 rounded-full h-4">
+                            <div class="chart-bar h-4 rounded-full" style="width: 23%; background: linear-gradient(90deg, #3b82f6, #60a5fa);"></div>
+                        </div>
+                    </div>
+                    <div class="cursor-pointer" onclick="showNotification('⚠️ Fair: 7% of listings score 70-79', 'warning')">
+                        <div class="flex justify-between text-white mb-2">
+                            <span>Fair (70-79)</span>
+                            <span class="font-bold">7%</span>
+                        </div>
+                        <div class="w-full bg-white bg-opacity-20 rounded-full h-4">
+                            <div class="chart-bar h-4 rounded-full" style="width: 7%; background: linear-gradient(90deg, #f59e0b, #fbbf24);"></div>
+                        </div>
+                    </div>
+                    <div class="cursor-pointer" onclick="showNotification('❌ Poor: 3% of listings score below 70', 'error')">
+                        <div class="flex justify-between text-white mb-2">
+                            <span>Poor (< 70)</span>
+                            <span class="font-bold">3%</span>
+                        </div>
+                        <div class="w-full bg-white bg-opacity-20 rounded-full h-4">
+                            <div class="chart-bar h-4 rounded-full" style="width: 3%; background: linear-gradient(90deg, #ef4444, #f87171);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="glass-card rounded-3xl p-8 slide-in" style="animation-delay: 0.7s;">
+                <h3 class="text-2xl font-black text-white mb-6">
+                    <i class="fas fa-clock mr-3"></i> Recent Activity
+                </h3>
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-4 p-4 bg-white bg-opacity-10 rounded-xl hover-lift cursor-pointer" onclick="showNotification('✅ Premium Wireless Headphones - Approved 2 minutes ago', 'success')">
+                        <i class="fas fa-check-circle text-3xl text-green-400"></i>
+                        <div class="flex-1">
+                            <p class="text-white font-semibold">Wireless Headphones Approved</p>
+                            <p class="text-purple-200 text-sm">2 minutes ago</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4 p-4 bg-white bg-opacity-10 rounded-xl hover-lift cursor-pointer" onclick="showNotification('⏳ Smart Watch - Currently under AI review', 'info')">
+                        <i class="fas fa-clock text-3xl text-yellow-400"></i>
+                        <div class="flex-1">
+                            <p class="text-white font-semibold">Smart Watch Under Review</p>
+                            <p class="text-purple-200 text-sm">15 minutes ago</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4 p-4 bg-white bg-opacity-10 rounded-xl hover-lift cursor-pointer" onclick="showNotification('❌ Laptop Listing - Rejected due to incomplete description', 'error')">
+                        <i class="fas fa-times-circle text-3xl text-red-400"></i>
+                        <div class="flex-1">
+                            <p class="text-white font-semibold">Laptop Listing Rejected</p>
+                            <p class="text-purple-200 text-sm">1 hour ago</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4 p-4 bg-white bg-opacity-10 rounded-xl hover-lift cursor-pointer" onclick="showNotification('✅ Running Shoes Pro - Approved 3 hours ago', 'success')">
+                        <i class="fas fa-check-circle text-3xl text-green-400"></i>
+                        <div class="flex-1">
+                            <p class="text-white font-semibold">Running Shoes Approved</p>
+                            <p class="text-purple-200 text-sm">3 hours ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sample Products with Real Images -->
+        <div class="glass-card rounded-3xl p-8 slide-in" style="animation-delay: 0.8s;">
+            <h2 class="text-3xl font-black text-white mb-6">
+                <i class="fas fa-star mr-3"></i> Featured Listings
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Product 1 -->
+                <div class="product-card hover-lift glass-card rounded-2xl overflow-hidden cursor-pointer" onclick="viewProduct('Premium Wireless Headphones', 95)">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=300&fit=crop" alt="Headphones" class="product-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="h-48 bg-gradient-to-br from-purple-500 to-pink-500 items-center justify-center hidden">
+                        <i class="fas fa-headphones text-8xl text-white opacity-80"></i>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="text-white font-bold text-lg mb-2">Premium Wireless Headphones</h4>
+                        <p class="text-purple-200 text-sm mb-3">Electronics • $299.99</p>
+                        <div class="flex items-center justify-between">
+                            <span class="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">✓ Approved</span>
+                            <span class="text-white font-bold">95/100</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card hover-lift glass-card rounded-2xl overflow-hidden cursor-pointer" onclick="viewProduct('Running Shoes Pro', 88)">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=300&fit=crop" alt="Shoes" class="product-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="h-48 bg-gradient-to-br from-blue-500 to-cyan-500 items-center justify-center hidden">
+                        <i class="fas fa-shoe-prints text-8xl text-white opacity-80"></i>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="text-white font-bold text-lg mb-2">Running Shoes Pro</h4>
+                        <p class="text-purple-200 text-sm mb-3">Sports • $129.99</p>
+                        <div class="flex items-center justify-between">
+                            <span class="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">✓ Approved</span>
+                            <span class="text-white font-bold">88/100</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card hover-lift glass-card rounded-2xl overflow-hidden cursor-pointer" onclick="viewProduct('Smart Watch Ultra', 0)">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=300&fit=crop" alt="Watch" class="product-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="h-48 bg-gradient-to-br from-green-500 to-teal-500 items-center justify-center hidden">
+                        <i class="fas fa-watch text-8xl text-white opacity-80"></i>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="text-white font-bold text-lg mb-2">Smart Watch Ultra</h4>
+                        <p class="text-purple-200 text-sm mb-3">Electronics • $449.99</p>
+                        <div class="flex items-center justify-between">
+                            <span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-xs font-bold">⏳ Review</span>
+                            <span class="text-white font-bold">--/100</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card hover-lift glass-card rounded-2xl overflow-hidden cursor-pointer" onclick="viewProduct('Gaming Console X', 92)">
+                    <img src="https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=400&h=300&fit=crop" alt="Console" class="product-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="h-48 bg-gradient-to-br from-red-500 to-orange-500 items-center justify-center hidden">
+                        <i class="fas fa-gamepad text-8xl text-white opacity-80"></i>
+                    </div>
+                    <div class="p-4">
+                        <h4 class="text-white font-bold text-lg mb-2">Gaming Console X</h4>
+                        <p class="text-purple-200 text-sm mb-3">Gaming • $599.99</p>
+                        <div class="flex items-center justify-between">
+                            <span class="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">✓ Approved</span>
+                            <span class="text-white font-bold">92/100</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Listing Section -->
+    <div id="create" class="section hidden">
+        <div class="glass-card rounded-3xl p-8 slide-in">
+            <h2 class="text-3xl font-black text-white mb-6">
+                <i class="fas fa-plus-circle mr-3"></i> Create New Listing
+            </h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <div>
+                        <label class="text-white font-semibold mb-2 block">Product Title *</label>
+                        <input type="text" id="productTitle" placeholder="e.g., Premium Wireless Headphones" class="w-full px-4 py-3 rounded-xl bg-white bg-opacity-20 text-white placeholder-purple-200 border border-white border-opacity-30 focus:outline-none focus:border-purple-400">
+                    </div>
+                    <div>
+                        <label class="text-white font-semibold mb-2 block">Category *</label>
+                        <select id="productCategory" class="w-full px-4 py-3 rounded-xl bg-white bg-opacity-20 text-white border border-white border-opacity-30 focus:outline-none focus:border-purple-400">
+                            <option value="">Select Category</option>
+                            <option>Electronics</option>
+                            <option>Fashion</option>
+                            <option>Home & Garden</option>
+                            <option>Sports</option>
+                            <option>Books</option>
+                            <option>Gaming</option>
+                            <option>Toys</option>
+                            <option>Beauty</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="text-white font-semibold mb-2 block">Price ($) *</label>
+                        <input type="number" id="productPrice" placeholder="0.00" class="w-full px-4 py-3 rounded-xl bg-white bg-opacity-20 text-white placeholder-purple-200 border border-white border-opacity-30 focus:outline-none focus:border-purple-400">
+                    </div>
+                    <div>
+                        <label class="text-white font-semibold mb-2 block">Brand</label>
+                        <input type="text" id="productBrand" placeholder="e.g., Sony" class="w-full px-4 py-3 rounded-xl bg-white bg-opacity-20 text-white placeholder-purple-200 border border-white border-opacity-30 focus:outline-none focus:border-purple-400">
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div>
+                        <label class="text-white font-semibold mb-2 block">Description *</label>
+                        <textarea id="productDescription" rows="6" placeholder="Detailed product description..." class="w-full px-4 py-3 rounded-xl bg-white bg-opacity-20 text-white placeholder-purple-200 border border-white border-opacity-30 focus:outline-none focus:border-purple-400"></textarea>
+                    </div>
+                    <div>
+                        <label class="text-white font-semibold mb-2 block">Product Images (URLs)</label>
+                        <input type="text" id="productImages" placeholder="https://example.com/image1.jpg" class="w-full px-4 py-3 rounded-xl bg-white bg-opacity-20 text-white placeholder-purple-200 border border-white border-opacity-30 focus:outline-none focus:border-purple-400">
+                    </div>
+                    <div>
+                        <label class="text-white font-semibold mb-2 block">Tags</label>
+                        <input type="text" id="productTags" placeholder="wireless, bluetooth, noise-canceling" class="w-full px-4 py-3 rounded-xl bg-white bg-opacity-20 text-white placeholder-purple-200 border border-white border-opacity-30 focus:outline-none focus:border-purple-400">
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 flex space-x-4">
+                <button onclick="createListing()" class="btn-premium px-8 py-4 rounded-xl text-white font-bold text-lg flex-1">
+                    <i class="fas fa-robot mr-2"></i> AI Review & Submit
+                </button>
+                <button onclick="clearForm()" class="glass-card hover-lift px-8 py-4 rounded-xl text-white font-bold text-lg">
+                    <i class="fas fa-undo mr-2"></i> Clear
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Review Listings Section -->
+    <div id="review" class="section hidden">
+        <div class="glass-card rounded-3xl p-8 slide-in">
+            <h2 class="text-3xl font-black text-white mb-6">
+                <i class="fas fa-search mr-3"></i> Review Listings
+            </h2>
+            
+            <!-- Search and Filter -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                <input type="text" id="searchInput" placeholder="🔍 Search listings..." class="px-4 py-3 rounded-xl bg-white bg-opacity-20 text-white placeholder-purple-200 border border-white border-opacity-30 focus:outline-none focus:border-purple-400" onkeyup="performSearch()">
+                <select id="statusFilter" class="px-4 py-3 rounded-xl bg-white bg-opacity-20 text-white border border-white border-opacity-30 focus:outline-none focus:border-purple-400" onchange="applyFilters()">
+                    <option>All Statuses</option>
+                    <option>Approved</option>
+                    <option>Under Review</option>
+                    <option>Rejected</option>
+                </select>
+                <select id="categoryFilter" class="px-4 py-3 rounded-xl bg-white bg-opacity-20 text-white border border-white border-opacity-30 focus:outline-none focus:border-purple-400" onchange="applyFilters()">
+                    <option>All Categories</option>
+                    <option>Electronics</option>
+                    <option>Fashion</option>
+                    <option>Home & Garden</option>
+                </select>
+            </div>
+
+            <!-- Listing Cards -->
+            <div class="space-y-4" id="listingsContainer">
+                <!-- Sample Listing 1 -->
+                <div class="glass-card hover-lift rounded-2xl p-6 cursor-pointer" onclick="showListingDetail('Premium Wireless Headphones', 95, 'approved')">
+                    <div class="flex items-start space-x-6">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&h=200&fit=crop" alt="Headphones" class="w-32 h-32 rounded-xl object-cover flex-shrink-0" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="w-32 h-32 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 items-center justify-center flex-shrink-0 hidden">
+                            <i class="fas fa-headphones text-5xl text-white"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-start justify-between mb-3">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white">Premium Wireless Headphones</h3>
+                                    <p class="text-purple-200 mt-1">Electronics • $299.99</p>
+                                </div>
+                                <span class="bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold">
+                                    <i class="fas fa-check-circle mr-1"></i> Approved
+                                </span>
+                            </div>
+                            <p class="text-white mb-4">High-quality wireless headphones with active noise cancellation, 30-hour battery life, and premium sound quality.</p>
+                            <div class="flex items-center space-x-6">
+                                <div class="flex items-center">
+                                    <i class="fas fa-star text-yellow-400 mr-2"></i>
+                                    <span class="text-white font-bold text-lg">95/100</span>
+                                </div>
+                                <div class="flex items-center text-purple-200">
+                                    <i class="fas fa-clock mr-2"></i>
+                                    <span>Reviewed 2 hours ago</span>
+                                </div>
+                                <button onclick="event.stopPropagation(); downloadReport('headphones')" class="btn-premium px-4 py-2 rounded-lg text-sm">
+                                    <i class="fas fa-download mr-1"></i> Report
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sample Listing 2 -->
+                <div class="glass-card hover-lift rounded-2xl p-6 cursor-pointer" onclick="showListingDetail('Smart Watch Ultra', 0, 'review')">
+                    <div class="flex items-start space-x-6">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&h=200&fit=crop" alt="Watch" class="w-32 h-32 rounded-xl object-cover flex-shrink-0" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="w-32 h-32 rounded-xl bg-gradient-to-br from-green-500 to-teal-500 items-center justify-center flex-shrink-0 hidden">
+                            <i class="fas fa-watch text-5xl text-white"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-start justify-between mb-3">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white">Smart Watch Ultra</h3>
+                                    <p class="text-purple-200 mt-1">Electronics • $449.99</p>
+                                </div>
+                                <span class="bg-yellow-500 text-white px-4 py-2 rounded-full text-sm font-bold">
+                                    <i class="fas fa-hourglass-half mr-1"></i> Under Review
+                                </span>
+                            </div>
+                            <p class="text-white mb-4">Advanced smartwatch with health tracking, GPS, water resistance, and 7-day battery life.</p>
+                            <div class="flex items-center space-x-6">
+                                <div class="flex items-center">
+                                    <i class="fas fa-robot text-purple-400 mr-2"></i>
+                                    <span class="text-white font-bold">AI Processing...</span>
+                                </div>
+                                <div class="flex items-center text-purple-200">
+                                    <i class="fas fa-clock mr-2"></i>
+                                    <span>Started 15 minutes ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sample Listing 3 -->
+                <div class="glass-card hover-lift rounded-2xl p-6 cursor-pointer" onclick="showListingDetail('Gaming Console X', 92, 'approved')">
+                    <div class="flex items-start space-x-6">
+                        <img src="https://images.unsplash.com/photo-1486401899868-0e435ed85128?w=200&h=200&fit=crop" alt="Console" class="w-32 h-32 rounded-xl object-cover flex-shrink-0" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="w-32 h-32 rounded-xl bg-gradient-to-br from-red-500 to-orange-500 items-center justify-center flex-shrink-0 hidden">
+                            <i class="fas fa-gamepad text-5xl text-white"></i>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-start justify-between mb-3">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-white">Gaming Console X</h3>
+                                    <p class="text-purple-200 mt-1">Gaming • $599.99</p>
+                                </div>
+                                <span class="bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold">
+                                    <i class="fas fa-check-circle mr-1"></i> Approved
+                                </span>
+                            </div>
+                            <p class="text-white mb-4">Next-generation gaming console with 4K graphics, ray tracing, and massive game library.</p>
+                            <div class="flex items-center space-x-6">
+                                <div class="flex items-center">
+                                    <i class="fas fa-star text-yellow-400 mr-2"></i>
+                                    <span class="text-white font-bold text-lg">92/100</span>
+                                </div>
+                                <div class="flex items-center text-purple-200">
+                                    <i class="fas fa-clock mr-2"></i>
+                                    <span>Reviewed 5 hours ago</span>
+                                </div>
+                                <button onclick="event.stopPropagation(); downloadReport('console')" class="btn-premium px-4 py-2 rounded-lg text-sm">
+                                    <i class="fas fa-download mr-1"></i> Report
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Batch Upload Section -->
+    <div id="batch" class="section hidden">
+        <div class="glass-card rounded-3xl p-8 slide-in">
+            <h2 class="text-3xl font-black text-white mb-6">
+                <i class="fas fa-upload mr-3"></i> Batch Upload Listings
+            </h2>
+            <div class="text-center py-12">
+                <div class="float-animation inline-block mb-6">
+                    <i class="fas fa-cloud-upload-alt text-9xl text-white opacity-50"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-4">Upload CSV or Excel File</h3>
+                <p class="text-purple-200 mb-8 max-w-2xl mx-auto">
+                    Upload multiple product listings at once using our CSV or Excel template. Our AI will review each listing automatically.
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <label class="btn-premium px-8 py-4 rounded-xl text-white font-bold text-lg cursor-pointer">
+                        <i class="fas fa-file-csv mr-2"></i> Choose CSV File
+                        <input type="file" accept=".csv,.xlsx" class="hidden" onchange="handleFileUpload(this)">
+                    </label>
+                    <button onclick="downloadTemplate()" class="glass-card hover-lift px-8 py-4 rounded-xl text-white font-bold text-lg">
+                        <i class="fas fa-download mr-2"></i> Download Template
+                    </button>
+                </div>
+                <div class="mt-8 glass-card rounded-2xl p-6 max-w-2xl mx-auto text-left">
+                    <h4 class="text-white font-bold mb-3">
+                        <i class="fas fa-info-circle mr-2"></i> CSV Format Requirements:
+                    </h4>
+                    <ul class="text-purple-200 space-y-2">
+                        <li>✓ Required columns: title, description, price, category</li>
+                        <li>✓ Optional columns: brand, images, tags</li>
+                        <li>✓ Maximum 1000 listings per file</li>
+                        <li>✓ File size limit: 10MB</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- History Section -->
+    <div id="history" class="section hidden">
+        <div class="glass-card rounded-3xl p-8 slide-in">
+            <h2 class="text-3xl font-black text-white mb-6">
+                <i class="fas fa-history mr-3"></i> Listing History
+            </h2>
+            <div class="space-y-3">
+                <div class="glass-card hover-lift rounded-xl p-4 flex items-center justify-between cursor-pointer" onclick="viewHistory('headphones')">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-check-circle text-3xl text-green-400"></i>
+                        <div>
+                            <h4 class="text-white font-bold">Premium Wireless Headphones</h4>
+                            <p class="text-purple-200 text-sm">Approved with score 95/100 • 2 hours ago</p>
+                        </div>
+                    </div>
+                    <button class="btn-premium px-4 py-2 rounded-lg text-sm">
+                        View Details
+                    </button>
+                </div>
+                <div class="glass-card hover-lift rounded-xl p-4 flex items-center justify-between cursor-pointer" onclick="viewHistory('watch')">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-clock text-3xl text-yellow-400"></i>
+                        <div>
+                            <h4 class="text-white font-bold">Smart Watch Ultra</h4>
+                            <p class="text-purple-200 text-sm">Currently under review • 15 minutes ago</p>
+                        </div>
+                    </div>
+                    <button class="btn-premium px-4 py-2 rounded-lg text-sm">
+                        View Details
+                    </button>
+                </div>
+                <div class="glass-card hover-lift rounded-xl p-4 flex items-center justify-between cursor-pointer" onclick="viewHistory('console')">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-check-circle text-3xl text-green-400"></i>
+                        <div>
+                            <h4 class="text-white font-bold">Gaming Console X</h4>
+                            <p class="text-purple-200 text-sm">Approved with score 92/100 • 5 hours ago</p>
+                        </div>
+                    </div>
+                    <button class="btn-premium px-4 py-2 rounded-lg text-sm">
+                        View Details
+                    </button>
+                </div>
+                <div class="glass-card hover-lift rounded-xl p-4 flex items-center justify-between cursor-pointer" onclick="viewHistory('shoes')">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-check-circle text-3xl text-green-400"></i>
+                        <div>
+                            <h4 class="text-white font-bold">Running Shoes Pro</h4>
+                            <p class="text-purple-200 text-sm">Approved with score 88/100 • 1 day ago</p>
+                        </div>
+                    </div>
+                    <button class="btn-premium px-4 py-2 rounded-lg text-sm">
+                        View Details
+                    </button>
+                </div>
+                <div class="glass-card hover-lift rounded-xl p-4 flex items-center justify-between cursor-pointer" onclick="viewHistory('laptop')">
+                    <div class="flex items-center space-x-4">
+                        <i class="fas fa-times-circle text-3xl text-red-400"></i>
+                        <div>
+                            <h4 class="text-white font-bold">Budget Laptop</h4>
+                            <p class="text-purple-200 text-sm">Rejected - Incomplete description • 2 days ago</p>
+                        </div>
+                    </div>
+                    <button class="btn-premium px-4 py-2 rounded-lg text-sm">
+                        View Details
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Analytics Section -->
+    <div id="analytics" class="section hidden">
+        <div class="glass-card rounded-3xl p-8 slide-in mb-6">
+            <h2 class="text-3xl font-black text-white mb-6">
+                <i class="fas fa-chart-bar mr-3"></i> Advanced Analytics
+            </h2>
+            
+            <!-- Performance Metrics -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="glass-card rounded-2xl p-6 text-center hover-lift cursor-pointer" onclick="showNotification('⚡ Average review time: 2.3 seconds per listing', 'info')">
+                    <i class="fas fa-bolt text-6xl text-yellow-400 mb-4"></i>
+                    <h3 class="text-4xl font-black text-white mb-2">2.3s</h3>
+                    <p class="text-purple-200">Average Review Time</p>
+                </div>
+                <div class="glass-card rounded-2xl p-6 text-center hover-lift cursor-pointer" onclick="showNotification('✅ AI accuracy rate: 98.5% across all reviews', 'success')">
+                    <i class="fas fa-percentage text-6xl text-green-400 mb-4"></i>
+                    <h3 class="text-4xl font-black text-white mb-2">98.5%</h3>
+                    <p class="text-purple-200">AI Accuracy Rate</p>
+                </div>
+                <div class="glass-card rounded-2xl p-6 text-center hover-lift cursor-pointer" onclick="showNotification('💰 Total value reviewed: $2.1M across 1,247 listings', 'info')">
+                    <i class="fas fa-trophy text-6xl text-orange-400 mb-4"></i>
+                    <h3 class="text-4xl font-black text-white mb-2">$2.1M</h3>
+                    <p class="text-purple-200">Total Value Reviewed</p>
+                </div>
+            </div>
+
+            <!-- Category Performance -->
+            <h3 class="text-2xl font-black text-white mb-4">
+                <i class="fas fa-chart-pie mr-2"></i> Category Performance
+            </h3>
+            <div class="space-y-4">
+                <div class="glass-card rounded-xl p-4 cursor-pointer" onclick="showNotification('📱 Electronics: 342 listings, 89% average quality score', 'info')">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-white font-bold">📱 Electronics</span>
+                        <span class="text-white font-bold">342 listings • 89% avg score</span>
+                    </div>
+                    <div class="w-full bg-white bg-opacity-20 rounded-full h-3">
+                        <div class="h-3 rounded-full chart-bar" style="width: 89%; background: linear-gradient(90deg, #667eea, #764ba2);"></div>
+                    </div>
+                </div>
+                <div class="glass-card rounded-xl p-4 cursor-pointer" onclick="showNotification('👗 Fashion: 567 listings, 91% average quality score', 'info')">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-white font-bold">👗 Fashion</span>
+                        <span class="text-white font-bold">567 listings • 91% avg score</span>
+                    </div>
+                    <div class="w-full bg-white bg-opacity-20 rounded-full h-3">
+                        <div class="h-3 rounded-full chart-bar" style="width: 91%; background: linear-gradient(90deg, #f093fb, #f5576c);"></div>
+                    </div>
+                </div>
+                <div class="glass-card rounded-xl p-4 cursor-pointer" onclick="showNotification('🎮 Gaming: 298 listings, 87% average quality score', 'info')">
+                    <div class="flex justify-between items-center mb-2">
+                        <span class="text-white font-bold">🎮 Gaming</span>
+                        <span class="text-white font-bold">298 listings • 87% avg score</span>
+                    </div>
+                    <div class="w-full bg-white bg-opacity-20 rounded-full h-3">
+                        <div class="h-3 rounded-full chart-bar" style="width: 87%; background: linear-gradient(90deg, #4facfe, #00f2fe);"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="glass-card rounded-3xl p-6 mt-6 text-center">
+        <p class="text-white text-lg font-semibold">
+            <i class="fas fa-robot mr-2"></i> Powered by Advanced AI Technology
+        </p>
+        <p class="text-purple-200 mt-2">
+            © 2024 Marketplace Quality Reviewer • Made with ❤️ for Excellence
+        </p>
+    </footer>
+
+    <script>
+        // Modal Functions
+        function openSettings() {
+            document.getElementById('settingsModal').classList.remove('hidden');
+            showNotification('⚙️ Settings opened!', 'info');
+        }
+
+        function closeSettings() {
+            document.getElementById('settingsModal').classList.add('hidden');
+        }
+
+        function saveSettings() {
+            showNotification('✅ Settings saved successfully!', 'success');
+            setTimeout(() => closeSettings(), 1000);
+        }
+
+        function openNotifications() {
+            document.getElementById('notificationsModal').classList.remove('hidden');
+            showNotification('🔔 Notifications opened!', 'info');
+        }
+
+        function closeNotifications() {
+            document.getElementById('notificationsModal').classList.add('hidden');
+        }
+
+        // Show notification function
+        function showNotification(message, type = 'info') {
+            const container = document.getElementById('notificationContainer');
+            const colors = {
+                success: 'bg-green-500',
+                error: 'bg-red-500',
+                warning: 'bg-yellow-500',
+                info: 'bg-blue-500'
+            };
+            
+            const notification = document.createElement('div');
+            notification.className = `notification ${colors[type]} text-white px-6 py-4 rounded-xl shadow-2xl max-w-md`;
+            notification.innerHTML = `
+                <div class="flex items-center justify-between">
+                    <span class="font-semibold">${message}</span>
+                    <button onclick="this.parentElement.parentElement.remove()" class="ml-4 text-white hover:text-gray-200">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+            
+            container.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 5000);
+        }
+
+        // Show section function
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            showNotification(`📂 Switched to ${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)} section`, 'info');
+        }
+
+        // Filter category
+        function filterCategory(category) {
+            showNotification(`📱 Filtered by ${category} category - ${Math.floor(Math.random() * 500) + 100} items found`, 'success');
+            showSection('review');
+        }
+
+        // Create listing function
+        function createListing() {
+            const title = document.getElementById('productTitle').value;
+            const category = document.getElementById('productCategory').value;
+            const price = document.getElementById('productPrice').value;
+            const description = document.getElementById('productDescription').value;
+
+            if (!title || !category || !price || !description) {
+                showNotification('❌ Please fill in all required fields!', 'error');
+                return;
+            }
+
+            showNotification('🤖 AI is analyzing your listing...', 'info');
+            
+            setTimeout(() => {
+                const score = Math.floor(Math.random() * 20) + 80;
+                showNotification(`✅ "${title}" created! Quality Score: ${score}/100`, 'success');
+                clearForm();
+            }, 2000);
+        }
+
+        // Clear form function
+        function clearForm() {
+            document.getElementById('productTitle').value = '';
+            document.getElementById('productCategory').value = '';
+            document.getElementById('productPrice').value = '';
+            document.getElementById('productBrand').value = '';
+            document.getElementById('productDescription').value = '';
+            document.getElementById('productImages').value = '';
+            document.getElementById('productTags').value = '';
+            showNotification('🔄 Form cleared!', 'info');
+        }
+
+        // View product
+        function viewProduct(title, score) {
+            if (score > 0) {
+                showNotification(`📦 ${title} - Quality Score: ${score}/100 - Click to view full details`, 'success');
+            } else {
+                showNotification(`⏳ ${title} - Currently being reviewed by AI`, 'info');
+            }
+        }
+
+        // Show listing detail
+        function showListingDetail(title, score, status) {
+            const statusText = status === 'approved' ? 'Approved ✅' : status === 'review' ? 'Under Review ⏳' : 'Rejected ❌';
+            const scoreText = score > 0 ? `Quality Score: ${score}/100` : 'AI Processing...';
+            showNotification(`📋 ${title} • ${statusText} • ${scoreText}`, 'info');
+        }
+
+        // Download report
+        function downloadReport(product) {
+            showNotification(`📊 Downloading detailed report for ${product}...`, 'success');
+        }
+
+        // Handle file upload
+        function handleFileUpload(input) {
+            if (input.files.length > 0) {
+                const fileName = input.files[0].name;
+                showNotification(`📤 Uploading ${fileName}... Processing ${Math.floor(Math.random() * 50) + 10} listings`, 'info');
+                setTimeout(() => {
+                    showNotification(`✅ Batch upload complete! All listings reviewed by AI`, 'success');
+                }, 2000);
+            }
+        }
+
+        // Download template
+        function downloadTemplate() {
+            showNotification('📥 CSV template downloaded! Fill it with your products and upload.', 'success');
+        }
+
+        // View history
+        function viewHistory(product) {
+            showNotification(`📜 Viewing detailed history for ${product} listing...`, 'info');
+        }
+
+        // Search function
+        function performSearch() {
+            const query = document.getElementById('searchInput').value;
+            if (query.length > 2) {
+                showNotification(`🔍 Searching for "${query}"... Found ${Math.floor(Math.random() * 20) + 5} results`, 'info');
+            }
+        }
+
+        // Apply filters
+        function applyFilters() {
+            const status = document.getElementById('statusFilter').value;
+            const category = document.getElementById('categoryFilter').value;
+            showNotification(`🔧 Filters applied: ${status}, ${category}`, 'info');
+        }
+
+        // Close modals on background click
+        document.getElementById('settingsModal').addEventListener('click', function(e) {
+            if (e.target === this) closeSettings();
+        });
+
+        document.getElementById('notificationsModal').addEventListener('click', function(e) {
+            if (e.target === this) closeNotifications();
+        });
+
+        // Welcome notification
+        setTimeout(() => {
+            showNotification('👋 Welcome to AI Marketplace Quality Reviewer Premium!', 'success');
+        }, 500);
+
+        // Add slide-in animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.slide-in');
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                setTimeout(() => {
+                    el.style.animation = `slideIn 0.6s ease-out forwards`;
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>
